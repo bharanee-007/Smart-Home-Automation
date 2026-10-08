@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Smart Home Automation</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+    }
+
+    .card {
+      background: white;
+      max-width: 400px;
+      margin: auto;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px #aaa;
+    }
+
+    .item {
+      font-size: 20px;
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .item:last-child {
+      border-bottom: none;
+    }
+
+    .value {
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>🏠 Smart Home Automation</h1>
+
+  <div class="card">
+
+    <div class="item">
+      Motion:
+      <span class="value" id="motion">--</span>
+    </div>
+
+    <div class="item">
+      Light Level:
+      <span class="value" id="lightLevel">--</span>
+    </div>
+
+    <div class="item">
+      Light:
+      <span class="value" id="light">--</span>
+    </div>
+
+    <div class="item">
+      Fan:
+      <span class="value" id="fan">--</span>
+    </div>
+
+    <div class="item">
+      Buzzer:
+      <span class="value" id="buzzer">--</span>
+    </div>
+
+  </div>
+
+
+  <script type="module">
+
+    import { initializeApp }
+      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+    import {
+      getDatabase,
+      ref,
+      onValue
+    }
+      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDVNRTBrBxnDViF0gK73-ZrTIRPxpa-tlM",
+      authDomain: "smart-home-automation-84151.firebaseapp.com",
+      databaseURL: "https://smart-home-automation-84151-default-rtdb.firebaseio.com",
+      projectId: "smart-home-automation-84151",
+      storageBucket: "smart-home-automation-84151.firebasestorage.app",
+      messagingSenderId: "522507397439",
+      appId: "1:522507397439:web:5476cd00e7fabbca1dcb8a"
+    };
+
+
+    const app = initializeApp(firebaseConfig);
+
+    const database = getDatabase(app);
+
+    const homeRef = ref(database, "home");
+
+
+    onValue(homeRef, (snapshot) => {
+
+      const data = snapshot.val();
+
+      if (data) {
+
+        document.getElementById("motion").textContent =
+          data.motion == 1 ? "DETECTED" : "NO MOTION";
+
+        document.getElementById("lightLevel").textContent =
+          data.lightLevel;
+
+        document.getElementById("light").textContent =
+          data.light;
+
+        document.getElementById("fan").textContent =
+          data.fan;
+
+        document.getElementById("buzzer").textContent =
+          data.buzzer;
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
