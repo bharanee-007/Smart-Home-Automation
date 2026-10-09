@@ -6,6 +6,9 @@ The system detects human motion, monitors light intensity, and automatically con
 **LIVE DEPLOYMENT**
 Hosting URL: https://esp32-demoo-6ee8a.web.app
 
+**SIMULATION**
+https://wokwi.com/projects/477335372575989761
+
 ---
 
 ## 📌 Project Overview
