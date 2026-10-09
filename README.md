@@ -3,6 +3,8 @@
 A simple IoT-based Smart Home Automation system developed using **ESP32, Wokwi Simulation, Sensors, and Firebase Realtime Database**.
 
 The system detects human motion, monitors light intensity, and automatically controls a room light and fan. A push button is also used to control a buzzer. Sensor and device status are transmitted to Firebase and displayed on a real-time web dashboard.
+**LIVE DEPLOYMENT**
+Hosting URL: https://esp32-demoo-6ee8a.web.app
 
 ---
 
